@@ -12,18 +12,18 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService{
 
     @Autowired
-    EmployeeDao employeeDao;
+    private EmployeeDao employeeDao;
 
     @Transactional
     @Override
     public List<Employee> get() {
-        return employeeDao.get();
+        return employeeDao.findAll();
     }
 
     @Transactional
     @Override
     public Employee get(int id) {
-        return employeeDao.get(id);
+        return employeeDao.findById(id);
     }
 
     @Transactional
@@ -35,6 +35,6 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Transactional
     @Override
     public void delete(int id) {
-        employeeDao.delete(id);
+        employeeDao.deleteById(id);
     }
 }
